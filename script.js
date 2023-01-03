@@ -17,10 +17,25 @@ let tarefas = [
     'Assistir Filme'
 ];
 
-/*
-<li class="list-group-item list-group-item-action">Jogar GTA</li>
-<li class="list-group-item list-group-item-action">Estudar Python</li>
-<li class="list-group-item list-group-item-action">Estudar React</li>
-<li class="list-group-item list-group-item-action">Estudar Inglês</li>
-<li class="list-group-item list-group-item-action">Assistir Filme</li>
-*/
+function renderizarTarefas() {
+    for (tarefa of tarefas) {
+        // Criar o item da lista
+        let itemLista = document.createElement('li');
+
+        //Adicionar classes no item da lista
+        itemLista.setAttribute('class', "list-group-item list-group-item-action");
+
+        //Criar um texto
+        let itemTexto = document.createTextNode(tarefa);
+
+        //Adicionar o texto no item da lista
+        itemLista.appendChild(itemTexto);
+
+        //Adicionar o item da lista na lista
+        lista.appendChild(itemLista);
+
+    }
+}
+
+// Executando a função para renderizar tarefas
+renderizarTarefas();
