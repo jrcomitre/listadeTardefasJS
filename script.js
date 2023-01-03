@@ -31,6 +31,11 @@ function renderizarTarefas() {
         //Adicionar classes no item da lista
         itemLista.setAttribute('class', "list-group-item list-group-item-action");
 
+        // Adicionar evento de clique no item da lista
+        itemLista.onclick = function(){
+            deletarTarefa(this);
+        }
+
         //Criar um texto
         let itemTexto = document.createTextNode(tarefa);
 
@@ -51,7 +56,7 @@ btn.onclick = function(){
     // Capturar o valor digitado pelo usuário no input
     let novaTarefa = input.value;
 
-    if(novaTarefa !== ''){
+    if(novaTarefa !== ""){
     
         // Atualizar a nova tarefa na lista (array) de tarefas e renderizar a tela
         tarefas.push(novaTarefa);
@@ -66,9 +71,9 @@ btn.onclick = function(){
         removerSpan();
     
     }else{
+
         //Limpar mensagem de erro(spans)
-        removerSpan();
-        
+        removerSpan();                
 
         let span = document.createElement('span');
         span.setAttribute('class', 'alert alert-warning');
@@ -81,6 +86,7 @@ btn.onclick = function(){
         // Adicionar span no card
         card.appendChild(span);
 
+        
     }
 };
 
@@ -89,9 +95,17 @@ function removerSpan(){
     let spans = document.querySelectorAll('span');    
 
     for(let i = 0; i < spans.length; index++) {
-        card.removeChild(spans[i]);
-        
+        card.removeChild(spans[i]);        
     }
+
+}
+
+function deletarTarefa(tar){
+    //Remove a tarefa do array
+    tarefas.splice(tarefas.indexOf(tar.textContent), 1);
+
+    //Renderiza a tela
+    renderizarTarefas();
 
 }
 
