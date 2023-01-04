@@ -11,13 +11,7 @@ let btn = document.querySelector('#botao');
 // Referenciar a lista Adicionar tarefas
 let lista = document.querySelector('#lista');
 
-let tarefas = [
-    'Jogar GTA',
-    'Estudar Python',
-    'Estudar React',
-    'Estudar Inglês',
-    'Assistir Filme'
-];
+let tarefas = JSON.parse(localStorage.getItem('tarefas'));
 
 function renderizarTarefas() {
 
@@ -69,6 +63,9 @@ btn.onclick = function(){
 
         //limpar mensagens de erro (spans)
         removerSpan();
+
+        //Salvar dados no Storage do navegador
+        salvarDadosnoStorage();
     
     }else{
 
@@ -86,6 +83,8 @@ btn.onclick = function(){
         // Adicionar span no card
         card.appendChild(span);
 
+        //Salva os novos dados no banco de dados
+        salvarDadosnoStorage();
         
     }
 };
@@ -107,7 +106,12 @@ function deletarTarefa(tar){
     //Renderiza a tela
     renderizarTarefas();
 
+    //Salva os novos dados no banco de dados
+    salvarDadosnoStorage();
 }
 
-
+function salvarDadosnoStorage(){
+    //Todo navegador web possui storage local
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+}
 
