@@ -93,7 +93,7 @@ btn.onclick = function(){
 function removerSpan(){
     let spans = document.querySelectorAll('span');    
 
-    for(let i = 0; i < spans.length; index++) {
+    for(let i = 0; i < spans.length; i++) {
         card.removeChild(spans[i]);        
     }
 
